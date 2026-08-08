@@ -138,3 +138,148 @@ body {
     flex-direction: column;
     width: 50%;
 }
+
+
+
+.account{
+    margin: 0;
+    padding: 0;
+}
+
+.account button{
+    border: none;
+    color: white;
+    border-radius:16px;
+    border:3px solid #2D42FF;
+    background: #444444;
+    font-size: 42px;
+    font-family: 'Instrument Sans', sans-serif;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.account button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(255, 78, 78, 0.2);
+    filter: brightness(1.08);
+    cursor: pointer;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+nav .nav-left-side img{
+    padding: 10px;
+    border-radius: 16px;
+    height: 50px;
+    width: auto;
+}
+
+nav .nav-right-side{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+nav .nav-right-side .logout-btn{
+    padding-inline: 20px;
+    color: white;
+    border-radius:16px;
+    border:3px solid #FF4E4E;
+}
+
+nav .nav-right-side .mode-btn{
+    padding-inline: 10px;
+}
+
+
+.balance-container{
+    background-color: #328BFF;
+    border: 5px solid #c2e7ac;
+    padding-left:60px;
+    padding-top:30px;
+    padding-bottom:30px;
+    border-radius:40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    margin: 51.5px 95px;
+    color: white;
+}
+
+.balance-container h1{
+    color: #c2e7ac;
+    font-size: 48px;
+    font-family: 'SF Pro', sans-serif;
+}
+
+.balance-container .currency{
+    color: #69FF7D;
+}
+
+.balance-container span{
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 128px;
+}
+
+.action-btns{
+    margin: 51.5px 95px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.action-btns button{
+    padding-inline: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.purchase-items{
+    color: white;
+    margin: 51.5px 95px;
+}
+
+.purchase-items ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.purchase-items ul li{
+    display: flex;
+    justify-content: space-between;
+    background-color: #328BFF;
+    background-color: #328BFF;
+    border: 5px solid #c2e7ac;
+    padding-inline:60px;
+    padding-top:40px;
+    padding-bottom:40px;
+    border-radius:40px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 48px;
+    text-align: left;
+}
+.purchase-items ul li span{
+    display: block;
+}
+
+.purchase-items ul li .item-name{
+    width: 30%;
+}
+.purchase-items ul li .item-price{
+    width: 30%;
+}
+.purchase-items ul li .item-note{
+    width: 40%;
+}
+
+
+
