@@ -92,10 +92,100 @@ linear-gradient(135deg, #087eea, #00a8ff);
 
         .close{
             position: absolute;
+            right: 18px;
+            top: 25px;
+            color: #555;
+            font-size: 22px;
+            cursor: pointer;
         }
+
+        button {
+            width: 72%;
+            height: 58px;
+            border: none;
+            border-radius: 30px;
+            background: #eeeeee;
+            color: #333;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: white;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            .title {
+                margin-bottom: 80px;
+            }
+
+            .input-container {
+                margin-bottom: 180px;
+            }
+
+            button {
+                width: 90%;
+        }
+            
     </style>
 </head>
 <body>
+    <div class="container">
+
+        <div class="title">
+            <div class="user-icon"></div>
+
+            <h1>
+                WE JUST SENT AN<br>
+                EMAIL
+            </h1>
+        </div>
+
+        <div class="code-title">
+            The code:
+        </div>
+
+        <div class="input-container">
+
+            <span class="input-label">Input</span>
+
+            <input
+                type="text"
+                class="code-input"
+                id="code"
+            >
+
+            <span class="close" onclick="clearCode()">×</span>
+
+        </div>
+
+        <button onclick="submitCode()">
+            lets go!
+        </button>
+
+    </div>
+
+    <script>
+        function clearCode() {
+            document.getElementById("code").value = "";
+        }
+
+        function submitCode() {
+            const code = document.getElementById("code").value;
+
+            if (code.trim() === "") {
+                alert("Please enter the code.");
+            } else {
+                alert("Code entered: " + code);
+            }
+        }
+    </script>
     
 </body>
 </html>
