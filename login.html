@@ -18,7 +18,7 @@
       
       <div class="input-box">
           <div class="input-row">
-              <input type="email" placeholder="login" class="custom-input">
+              <input type="email" placeholder="login" class="custom-input email-input">
         </div>
       </div>
       
@@ -27,5 +27,18 @@
 </div>
 <button type="submit" class="send-btn">SEND</button>
 </div>
+
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+<script>
+  emailjs.init({
+    publicKey: "Loj5XrXzbcnQMkrup"
+  });
+</script>
+
+<script src="script.js"></script>
 </body>
 </html>
