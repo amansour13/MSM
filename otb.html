@@ -14,11 +14,9 @@
         }
 
         body {
-            font-family: Arial, Helvetica,
-sans-serif;
-            background:
-linear-gradient(135deg, #087eea, #00a8ff);
-            min-height: 100v;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #087eea, #00a8ff);
+            min-height: 100vh;
             display:flex;
             justify-content: center;
             color: white;
@@ -63,7 +61,7 @@ linear-gradient(135deg, #087eea, #00a8ff);
             margin-bottom: 20px;
         }
 
-        input-container {
+        .input-container {
             position: relative;
             width: 100%;
             margin-bottom: 250px;
@@ -131,6 +129,7 @@ linear-gradient(135deg, #087eea, #00a8ff);
 
             button {
                 width: 90%;
+            }
         }
             
     </style>
@@ -165,27 +164,12 @@ linear-gradient(135deg, #087eea, #00a8ff);
 
         </div>
 
-        <button onclick="submitCode()">
+        <button class="submit-code">
             lets go!
         </button>
 
     </div>
+    <script src="script.js"></script>
 
-    <script>
-        function clearCode() {
-            document.getElementById("code").value = "";
-        }
-
-        function submitCode() {
-            const code = document.getElementById("code").value;
-
-            if (code.trim() === "") {
-                alert("Please enter the code.");
-            } else {
-                alert("Code entered: " + code);
-            }
-        }
-    </script>
-    
 </body>
 </html>
