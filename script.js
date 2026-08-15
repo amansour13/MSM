@@ -79,3 +79,11 @@ if (submitBtn){
 
 // end of login script
 
+
+
+// account (class)
+// data: email, name, balance, lineitems, logs(optional), min_save_point
+// methods: add_money(), deduct(), add_line_item(), remove_line_item(), logout()
+
+// line_item (object): has name, price, note
+
