@@ -39,7 +39,7 @@
         <div class="action-btns">
             <button class="add-money-btn">Add Money</button>
             <button class="add-item-btn">Add Item</button>
-            <button class="transactions-btn">Transactions</button>
+            <button class="transactions-btn">Deduct</button>
             <button class="savings-btn">Savings</button>
         </div>
 
@@ -64,5 +64,18 @@
         </div>
     </main>
     
+    <script src="script.js"></script>
+
+    <script>
+        const currentEmail = sessionStorage.getItem("currentEmail");
+        
+        for (let i = 0; i < testAccounts.length; i++) {
+            if (currentEmail === testAccounts[i].email) {
+                testAccounts[i].login();
+                break;
+            }
+        }
+    </script>
+
 </body>
 </html>

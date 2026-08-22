@@ -55,6 +55,9 @@ if (sendBtn){
         const success = await sendOTP(emailInput.value);
         
         if (success) {
+            sessionStorage.setItem("currentEmail", emailInput.value);
+            console.log(sessionStorage.getItem('currentEmail'), 'kkkkk');
+
             window.location.href = "otb.html";
         } else {
             alert("Failed to send OTP. Please try again.");
@@ -68,6 +71,7 @@ if (submitBtn){
         const code = document.getElementById("code").value;
         console.log('hello world')
         if (code == sessionStorage.getItem('generatedOTP')){
+
             window.location.href = "account.html"
         }
         else{
@@ -87,3 +91,173 @@ if (submitBtn){
 
 // line_item (object): has name, price, note
 
+
+class line_item{
+    constructor(name, price, note) {
+        this.name = name;
+        this.price = price;
+        this.note = note
+      }
+}
+
+
+class account{
+    constructor(email, name, balance=0, min_save_point){
+        this.email = email;
+        this.name = name;
+        this.balance = balance;
+        this.lineitems = [new line_item("Item", 5000, 'Ay haga')];
+        this.logs = [];
+        this.min_save_point = min_save_point;
+    }
+
+    add_money(money){
+        if (money > 0){
+            this.balance += money;
+        }
+        this.refresh_data()
+    }
+    
+    deduct(money){
+        if (money > 0){
+            this.balance -= money;
+        }
+        this.refresh_data()
+    }   
+
+    add_line_item(name, price, note){
+        let lineitem = new line_item(name, price, note);
+        this.lineitems.push(lineitem);
+        this.refresh_data()
+    }
+
+    remove_line_item(name){
+        for(let i = 0; i < this.lineitems.length; i++){
+            if (name == this.lineitems[i].name){
+                this.lineitems.splice(i, 1);
+                break;
+            }
+        }
+        this.refresh_data()
+    }
+
+    logout(){
+        window.location.href = 'login.html';
+    }
+
+    login(){
+        this.refresh_data()
+    }
+
+    refresh_data(){
+        let balance = document.querySelector('.balance-container .money');
+        balance.innerHTML = this.balance;
+        
+        let items = document.querySelector('.purchase-items ul');
+        items.innerHTML = '';
+
+        for (let i = 0; i < this.lineitems.length; i++){
+            let item = `<li>
+            <span class="item-name">${this.lineitems[i].name}</span> 
+            <span class="item-price">E£${this.lineitems[i].price}</span> 
+            <span class="item-note">${this.lineitems[i].note}</span> 
+            </li>`;
+            
+            items.innerHTML += item;
+        }
+    }
+}
+
+let add_money_btn = document.querySelector('.add-money-btn');
+
+add_money_btn.addEventListener('click', ()=>{
+    for (let i = 0; i < testAccounts.length; i++) {
+        if (currentEmail === testAccounts[i].email) {
+            let money = prompt('How much you need to add?')
+            testAccounts[i].add_money(Number(money));
+            break;
+        }
+    }
+})
+
+let deduct_btn = document.querySelector('.transactions-btn');
+
+deduct_btn.addEventListener('click', ()=>{
+    for (let i = 0; i < testAccounts.length; i++) {
+        if (currentEmail === testAccounts[i].email) {
+            let money = prompt('How much you need to deduct?')
+            testAccounts[i].deduct(Number(money));
+            break;
+        }
+    }
+})
+
+let item_btn = document.querySelector('.add-item-btn');
+
+item_btn.addEventListener('click', ()=>{
+    for (let i = 0; i < testAccounts.length; i++) {
+        if (currentEmail === testAccounts[i].email) {
+            let name = prompt("Enter item name:");
+            let price = prompt("Enter item price:");
+            let note = prompt("Enter item note:");
+            testAccounts[i].add_line_item(name, Number(price), note);
+            break;
+        }
+    }
+})
+
+let logout_btn = document.querySelector('.logout-btn');
+
+logout_btn.addEventListener('click', ()=>{
+    for (let i = 0; i < testAccounts.length; i++) {
+        if (currentEmail === testAccounts[i].email) {
+            testAccounts[i].logout();
+            break;
+        }
+    }
+})
+
+
+
+// let item = `<li>
+// <span class="item-name">${name}</span> 
+// <span class="item-price">E£${price}</span> 
+// <span class="item-note">${note}</span> 
+// </li>`;
+
+const testAccounts = [
+    new account(
+        "a.mansour1345@gmail.com",
+        "Ahmed",
+        5000,
+        2000
+    ),
+
+    new account(
+        "eyad.ahm92011@gmail.com",
+        "eyad",
+        0,
+        1000
+    ),
+
+    new account(
+        "y12880866@gmail.com",
+        "Youssef",
+        500,
+        1000
+    ),
+
+    new account(
+        "mariam@example.com",
+        "Mariam",
+        2500,
+        2000
+    ),
+
+    new account(
+        "omar@example.com",
+        "Omar",
+        -300,
+        1000
+    )
+];
