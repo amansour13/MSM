@@ -261,3 +261,23 @@ const testAccounts = [
         1000
     )
 ];
+
+
+
+const modeBtn = document.querySelector('.mode-btn');
+
+if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light-mode');
+}
+
+if (modeBtn) {
+    modeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        
+        if (document.body.classList.contains('light-mode')) {
+            localStorage.setItem('theme', 'light');
+        } else {
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+}
