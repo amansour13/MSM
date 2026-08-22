@@ -480,3 +480,52 @@ footer {
     line-height: 1.4;
   }
   
+/* Color themes definition */
+:root {
+    --bg-color: #060917;
+    --card-bg: #328BFF;
+    --border-color: #c2e7ac;
+    --text-primary: #ffffff;
+    --title-color: #c2e7ac;
+    --currency-color: #69FF7D;
+    --btn-bg: #444444;
+    --btn-border: #2D42FF;
+}
+
+body.light-mode {
+    --bg-color: #f0f4f8;
+    --card-bg: #ffffff;
+    --border-color: #2563EB;
+    --text-primary: #1e293b;
+    --title-color: #2563EB;
+    --currency-color: #16a34a;
+    --btn-bg: #e2e8f0;
+    --btn-border: #2563EB;
+}
+
+body.account {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+}
+
+.account button {
+    background: var(--btn-bg);
+    border-color: var(--btn-border);
+    color: var(--text-primary);
+}
+
+.balance-container, 
+.purchase-items ul li {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.balance-container h1 {
+    color: var(--title-color);
+}
+
+.balance-container .currency {
+    color: var(--currency-color);
+}
