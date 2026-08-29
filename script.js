@@ -1,4 +1,13 @@
 // login script
+
+const SUPABASE_URL = "https://crvcdoplhrfqyajntlqu.supabase.co";
+const SUPABASE_KEY = "sb_publishable_q3F5FWeC1FjcCEI-vM6gPw_GmBzY5KP";
+
+const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
 let generatedOTP = null;
 
 function generateOTP() {
@@ -225,44 +234,41 @@ logout_btn.addEventListener('click', ()=>{
 // <span class="item-note">${note}</span> 
 // </li>`;
 
-const testAccounts = [
-    new account(
-        "a.mansour1345@gmail.com",
-        "Ahmed",
-        5000,
-        2000
-    ),
+let currentAccount = null;
 
-    new account(
-        "eyad.ahm92011@gmail.com",
-        "eyad",
-        0,
-        1000
-    ),
+async function loadCurrentAccount() {
+    const currentEmail = sessionStorage.getItem("currentEmail");
 
-    new account(
-        "y12880866@gmail.com",
-        "Youssef",
-        500,
-        1000
-    ),
+    if (!currentEmail) {
+        window.location.href = "login.html";
+        return;
+    }
 
-    new account(
-        "mariam@example.com",
-        "Mariam",
-        2500,
-        2000
-    ),
+    const { data, error } = await supabase
+        .from("accounts")
+        .select("*")
+        .eq("email", currentEmail)
+        .single();
 
-    new account(
-        "omar@example.com",
-        "Omar",
-        -300,
-        1000
-    )
-];
+    if (error) {
+        console.error("Error loading account:", error);
+        alert("Could not load your account.");
+        return;
+    }
 
+    currentAccount = new account(
+        data.id,
+        data.email,
+        data.name,
+        data.balance,
+        data.min_save_point,
+        data.savings
+    );
 
+    await currentAccount.load();
+}
+
+loadCurrentAccount();
 
 const modeBtn = document.querySelector('.mode-btn');
 
