@@ -529,3 +529,10 @@ body.account {
 .balance-container .currency {
     color: var(--currency-color);
 }
+@media screen and (max-width:947px){
+.account button {
+    
+    font-size: 28px;
+
+}
+}
