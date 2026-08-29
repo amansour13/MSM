@@ -2,8 +2,14 @@
 let generatedOTP = null;
 
 function generateOTP() {
-    return Math.floor(100000 + Math.random() * 900000).toString();
+    return (10000);
 }
+
+// testing so it doesnt generate another otp code because idk how to get it
+
+//function generateOTP() {
+//    return Math.floor(100000 + Math.random() * 900000).toString();
+//}
 
 async function sendOTP(email) {
     generatedOTP = generateOTP();
@@ -280,4 +286,20 @@ if (modeBtn) {
             localStorage.setItem('theme', 'dark');
         }
     });
+}
+
+const currentEmail = sessionStorage.getItem("currentEmail");
+
+for (let i = 0; i < testAccounts.length; i++) {
+    if (testAccounts[i].email === currentEmail) {
+        testAccounts[i].login();
+        break;
+    }
+}
+
+for (let i = 0; i < testAccounts.length; i++) {
+    if (testAccounts[i].email === currentEmail) {
+        document.querySelector(".money").textContent = testAccounts[i].balance;
+        break;
+    }
 }
