@@ -9,7 +9,7 @@ const supabase = window.supabase.createClient(
 let generatedOTP = null;
 
 function generateOTP() {
-    return (100000);
+    return (100000)
 }
 
 //function generateOTP() {
