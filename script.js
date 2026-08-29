@@ -11,8 +11,12 @@ const supabase = window.supabase.createClient(
 let generatedOTP = null;
 
 function generateOTP() {
-    return Math.floor(100000 + Math.random() * 900000).toString();
+    return (100000);
 }
+//leave it like this until the project is done
+//function generateOTP() {
+//    return Math.floor(100000 + Math.random() * 900000).toString();
+//}
 
 async function sendOTP(email) {
     generatedOTP = generateOTP();
