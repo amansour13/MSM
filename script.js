@@ -10,6 +10,7 @@ let generatedOTP = null;
 
 function generateOTP() {
     return (100000)
+    alert (generateOTP)
 }
 
 //function generateOTP() {
