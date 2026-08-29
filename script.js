@@ -2,14 +2,8 @@
 let generatedOTP = null;
 
 function generateOTP() {
-    return (10000);
+    return Math.floor(100000 + Math.random() * 900000).toString();
 }
-
-// testing so it doesnt generate another otp code because idk how to get it
-
-//function generateOTP() {
-//    return Math.floor(100000 + Math.random() * 900000).toString();
-//}
 
 async function sendOTP(email) {
     generatedOTP = generateOTP();
