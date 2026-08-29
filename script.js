@@ -312,40 +312,20 @@ async function loadCurrentAccount() {
         return;
     }
 
-    const { data, error } = await supabase
-        .from("accounts")
-        .select("*")
-        .eq("email", currentEmail)
-        .single();
-
-    if (error) {
-        console.error("Error loading account:", error);
-        alert("Could not load your account.");
-        return;
-    }
-
     currentAccount = new account(
-        data.id,
-        data.email,
-        data.name,
-        data.balance,
-        data.min_save_point,
-        data.savings
+        null,
+        currentEmail,
+        "",
+        0,
+        0,
+        0
     );
 
-    currentAccount.lineitems = Array.isArray(data.lineitems)
-        ? data.lineitems.map(item => {
-            return new line_item(
-                item.name,
-                Number(item.price) || 0,
-                item.note || ""
-            );
-        })
-        : [];
+    const success = await currentAccount.load();
 
-    currentAccount.logs = Array.isArray(data.logs) ? data.logs : [];
-
-    currentAccount.refresh_data();
+    if (!success) {
+        currentAccount = null;
+    }
 }
 
 let add_money_btn = document.querySelector('.add-money-btn');
