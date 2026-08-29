@@ -303,3 +303,53 @@ for (let i = 0; i < testAccounts.length; i++) {
         break;
     }
 }
+
+// ==== NEW ADDITIONS FOR SAVINGS FEATURE ====
+
+// 1. Add this property inside the account constructor (after this.balance = balance;)
+this.savings = 0;
+
+// 2. Add this method inside the account class
+save_percentage(percent){
+    percent = Number(percent);
+
+    if (isNaN(percent) || percent <= 0 || percent > 100){
+        alert("Enter a percentage between 1 and 100");
+        return false;
+    }
+
+    let amount = this.balance * (percent / 100);
+
+    if (this.balance - amount < this.min_save_point){
+        alert(`That would drop your balance below your minimum save point of E£${this.min_save_point}`);
+        return false;
+    }
+
+    this.balance -= amount;
+    this.savings += amount;
+    this.refresh_data();
+    return true;
+}
+
+// 3. Add these lines inside refresh_data(), right after the balance.innerHTML line
+let savingsEl = document.querySelector('.savings-container .money');
+if (savingsEl){
+    savingsEl.innerHTML = this.savings;
+}
+
+// 4. Add this button listener anywhere near your other button listeners (outside the class)
+let savings_btn = document.querySelector('.savings-btn');
+
+if (savings_btn){
+    savings_btn.addEventListener('click', ()=>{
+        let percent = prompt("What percentage of your balance do you want to save?");
+        if (percent === null) return; // user hit cancel
+
+        for (let i = 0; i < testAccounts.length; i++) {
+            if (currentEmail === testAccounts[i].email) {
+                testAccounts[i].save_percentage(percent);
+                break;
+            }
+        }
+    })
+}
